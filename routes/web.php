@@ -14,5 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('form');
+})->name('home');
+
+Route::get('inscricoes', function () {
+    return view('registrations');
+})->name('registrations');
+
+Route::get('inscricoes/{name}', function ($name) {
+    return view('registration-show');
+})->name('registration-show');
+
+Route::get('form', function () {
+    return view('form');
+})->name('form');
+
+Route::get('novo-form', function () {
+    return view('form-create');
+})->name('form-create');
+
+Route::get('form/show', function () {
+    return view('form-show');
+})->name('form-show');
+
+

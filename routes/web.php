@@ -14,28 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('courses.form');
-})->name('home');
+    return view('courses.course');
+})->middleware(['auth'])->name('home');
 
 Route::get('inscricoes', function () {
     return view('courses.registrations');
-})->name('registrations');
+})->middleware(['auth'])->name('registrations');
 
 Route::get('inscricoes/{name}', function ($name) {
     return view('courses.registration-show');
-})->name('registration-show');
+})->middleware(['auth'])->name('registration-show');
 
-Route::get('form', function () {
-    return view('courses.form');
-})->name('form');
+Route::get('cursos', function () {
+    return view('courses.course');
+})->middleware(['auth'])->name('courses');
 
-Route::get('novo-form', function () {
-    return view('courses.form-create');
-})->name('form-create');
+Route::get('novo-curso', function () {
+    return view('courses.course-create');
+})->middleware(['auth'])->name('course-create');
 
-Route::get('form/show', function () {
-    return view('courses.form-show');
-})->middleware(['auth'])->name('form-show');
+Route::get('curso/v', function () {
+    return view('courses.course-show');
+})->name('course-show');
 
 
 

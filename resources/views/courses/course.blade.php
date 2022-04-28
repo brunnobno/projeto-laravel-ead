@@ -4,10 +4,10 @@
 
 <div class="row">
     <div class="col-12 col-md-10 mt-3">
-        <h4 class="text-dark"><ion-icon name="newspaper-outline"></ion-icon> Formulários de inscrição</h4>
+        <h4 class="text-dark"><ion-icon name="newspaper-outline"></ion-icon> Cursos</h4>
     </div>
     <div class="col-12 col-md-2 mt-3">
-        <a href="{{ route('form-create') }}" class="btn btn-primary btn-sm">+ Criar formulário</a>
+        <a href="{{ route('course-create') }}" class="btn btn-primary btn-sm">+ Criar curso</a>
     </div>
         <hr>
 </div>
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <h5 class="card-title small">Intensivo Básico</h5>
                     <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('form-show') }}" class="btn btn-success btn-sm">Visualizar</a>
+                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
                     <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="card-body">
                     <h5 class="card-title small">Intensivo Básico</h5>
                     <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('form-show') }}" class="btn btn-success btn-sm">Visualizar</a>
+                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
                     <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <h5 class="card-title small">Intensivo Básico</h5>
                     <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('form-show') }}" class="btn btn-success btn-sm">Visualizar</a>
+                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
                     <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="card-body">
                     <h5 class="card-title small">Intensivo Básico</h5>
                     <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('form-show') }}" class="btn btn-success btn-sm">Visualizar</a>
+                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
                     <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
                 </div>
             </div>

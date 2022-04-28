@@ -61,7 +61,7 @@
                                 <a class="nav-link" href="{{ route('courses') }}"><strong>Cursos</strong></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('registrations') }}"><strong>Inscrições</strong></a>
+                                <a class="nav-link" href="{{ route('registered') }}"><strong>Inscrições</strong></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

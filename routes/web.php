@@ -4,14 +4,21 @@ use App\Http\Controllers\Web\CoursesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\SubscriptionController;
 
-Route::get('/', [CoursesController::class, 'index'] )->middleware(['auth'])->name('home');
+Route::get('/', [CoursesController::class, 'index'] )->middleware(['auth'])->name('index');
 
-Route::get('cursos', [CoursesController::class, 'index'] )->middleware(['auth'])->name('courses');
-Route::get('criar-curso', [CoursesController::class, 'create'] )->middleware(['auth'])->name('course-create');
-Route::get('curso/{$course?}', [CoursesController::class, 'show'] )->middleware(['auth'])->name('course-show');
+Route::prefix('cursos')->group(function () {
+    Route::get('/', [CoursesController::class, 'index'])->middleware(['auth'])->name('courses-index');
+    Route::get('curso/{slug}', [CoursesController::class, 'show'] )->name('course-show');
+    Route::get('criar', [CoursesController::class, 'create'])->middleware(['role:admin'])->name('course-create');
+    Route::post('criar', [CoursesController::class, 'store'])->middleware(['role:admin'])->name('course-create-post');
+    Route::get('editar/{slug}', [CoursesController::class, 'edit'])->middleware(['role:admin'])->name('course-edit');
+    Route::put('atualizar/{slug}', [CoursesController::class, 'update'])->name('course-update');
+});
 
-Route::get('inscritos', [SubscriptionController::class, 'index'])->middleware(['auth'])->name('registered');
-Route::get('inscrito/{name}', [SubscriptionController::class, 'show'])->middleware(['auth'])->name('registered-show');
+Route::prefix('inscritos')->group(function () {
+Route::get('', [SubscriptionController::class, 'index'])->middleware(['role:admin'])->name('registered');
+Route::get('{name}', [SubscriptionController::class, 'show'])->middleware(['role:admin'])->name('registered-show');
+});
 
 Auth::routes();
 

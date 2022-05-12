@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->longText('small_description');
-            $table->longText('long_description');
+            $table->longText('small_description')->nullable();
+            $table->longText('long_description')->nullable();
             $table->string('banner_source_type')->nullable()->default('internal'); //internal|external
             $table->string('banner_src')->nullable();
             $table->string('price')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('discount_type')->default('percent'); //percent|value
             $table->dateTime('will_start_in')->nullable();
             $table->dateTime('will_end_in')->nullable();
+
             $table->index([
                 'slug',
                 'price',

@@ -3,64 +3,39 @@
 @section('content')
 
 <div class="row">
-    <div class="col-12 col-md-10 mt-3">
-        <h4 class="text-dark"><ion-icon name="newspaper-outline"></ion-icon> Cursos</h4>
+    <div class="col-12 col-md-10">
+        <h4 class="text-dark"><i class="fas fa-user-graduate"></i> CURSOS</h4>
     </div>
-    <div class="col-12 col-md-2 mt-3">
-        <a href="{{ route('course-create') }}" class="btn btn-primary btn-sm">+ Criar curso</a>
-    </div>
-        <hr>
+    @role('admin')
+        <div class="col-12 col-md-2">
+            <div class="row justify-content-end m-0">
+                <a href="{{ route('course-create') }}" class="btn btn-primary btn-sm text-right">+ Criar curso</a>
+            </div>
+        </div>
+    @endrole
 </div>
 
-    <div class="row">
-        <div class="col-12 col-md-3">
-            <div class="card p-0 m-2" style="width: 100%;">
-                    <img src="https://befasterenglish.com.br/wp-content/uploads/2021/02/bg-3.jpg" class="card-img-top" style="height: 150px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title small">Intensivo Básico</h5>
-                    <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
-                    <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-3">
-            <div class="card p-0 m-2" style="width: 100%;">
-                    <img src="https://befasterenglish.com.br/wp-content/uploads/2021/02/bg-3.jpg" class="card-img-top" style="height: 150px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title small">Intensivo Básico</h5>
-                    <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
-                    <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-3">
-            <div class="card p-0 m-2" style="width: 100%;">
-                    <img src="https://befasterenglish.com.br/wp-content/uploads/2021/02/bg-3.jpg" class="card-img-top" style="height: 150px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title small">Intensivo Básico</h5>
-                    <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
-                    <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-3">
-            <div class="card p-0 m-2" style="width: 100%;">
-                    <img src="https://befasterenglish.com.br/wp-content/uploads/2021/02/bg-3.jpg" class="card-img-top" style="height: 150px" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title small">Intensivo Básico</h5>
-                    <p class="card-text small text-muted">Curso de Inglês nível básico com duração de 30 dias.</p>
-                    <a href="{{ route('course-show') }}" class="btn btn-success btn-sm">Visualizar</a>
-                    <a href="#" class="btn btn-primary btn-sm">Copiar link</a>
-                </div>
+<div class="row">
+    @foreach ($courses as $course)
+    <div class="col-12 col-md-4">
+        <div class="card mb-3 shadow-sm bg-body rounded" style="width: 100%;">
+                <img class="thumbnail-course" src="{{ $course->banner_src ? asset('storage/'.$course->banner_src) : asset('images/curso-sem-imagem.png') }}"
+                    class="card-img-top" style="height: 150px" alt="{{ $course->title }} - Image">
+            <div class="card-body">
+                <h6 class="card-title">{{ $course->title }}</h6>
+                <p class="card-text small text-muted">{!! Str::limit(strip_tags($course->long_description), 40, '...') !!}</p>
+                <a href="{{ route('course-show', $course->slug) }}" class="btn btn-primary btn-sm">Saiba mais</a>
+                @role('admin')
+                    <a href="{{ route('course-edit', $course->slug) }}" class="btn btn-warning btn-sm"><ion-icon name="create-outline"></ion-icon></a>
+                @endrole
             </div>
         </div>
     </div>
+    @endforeach
+</div>
 
+<div class="d-flex justify-content-center">
+    {{ $courses->links() }}
+</div>
 
 @endsection

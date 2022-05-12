@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Global */
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+main {
+    min-height: 85vh !important;
+    padding-bottom: 100px;
+    position: relative !important;
+}
+
+nav {
+    min-height: 10vh !important;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+footer {
+    min-height: 5vh !important;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+/* Login */
+
+.bg-login {
+    background-image: url("/images/bg-login.jpg"), url("https://befasterenglish.com.br/wp-content/uploads/2021/02/bg-3.jpg");
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: relative;
+    background-size: cover;
+}
+
+.text-password {
+    text-decoration: none !important;
+    font-size: 14px !important;
+}
+
+.text-description-login {
+    font-size: 18px !important;
+}
+
+.text-remember {
+    font-size: 14px !important;
+}
+
+/* Index - Course */
+
+.thumbnail-course {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  }
+
+.show-course {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}

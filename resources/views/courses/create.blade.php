@@ -4,11 +4,10 @@
 
 <div class="row justify-content-center">
     <div class="col-12 col-md-8 mt-3">
-     <h4 class="text-dark"><i class="fas fa-plus-circle"></i> Criar curso</h4>
+        <h4 class="text-dark"><i class="fas fa-plus-circle"></i> Criar curso</h4>
     </div>
     <div class="col-12 col-md-8 border rounded p-3 bg-white">
-
-        <form action="{{ route('course-create-post') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('course-store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-sm-12 col-md-6 mb-3">
@@ -182,4 +181,5 @@
 
     });
 </script>
+
 @endsection

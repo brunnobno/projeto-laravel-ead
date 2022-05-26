@@ -45,7 +45,13 @@
             @endempty
 
             <br>
-            <button type="button" class="btn btn-primary">Eu quero participar!</button>
+            @php
+                $linkPara = ($course->classes->count() == 1)
+                    ? "incricao-no-curso-{$course->id}-classe-XYZ"
+                    : "lista-de-classes-para-o-curso-{$course->id}";
+            @endphp
+            {{ $linkPara }}
+            <a href="#{{ $linkPara }}" class="btn btn-primary">Eu quero participar!</a>
         </div>
 
     </div>

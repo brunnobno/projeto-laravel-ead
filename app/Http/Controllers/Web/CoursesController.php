@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseClass;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Integer;
 
@@ -16,9 +17,15 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('id', 'DESC')->Paginate(3);
+        $courseClasses = CourseClass::active()->orderBy('id', 'DESC')
+            ->with('course')
+            ->whereHas('course', function ($query) {
+                $query->where('status', Course::STATUS_ACTIVE);
+            })
+            ->Paginate(8);
+
         return view('courses.index', [
-            'courses' => $courses,
+            'courseClasses' => $courseClasses,
         ]);
     }
 
@@ -111,7 +118,7 @@ class CoursesController extends Controller
      */
     public function show(string $slug)
     {
-        $course = Course::where('slug', $slug)->first();
+        $course = Course::where('slug', $slug)->with('classes')->first();
 
         if(!$course) {
             return redirect()->route('courses-index')->with('error', 'Curso não encontrado!');
@@ -120,7 +127,6 @@ class CoursesController extends Controller
         return view('courses.show', [
             'course' => $course,
         ]);
-
     }
 
     /**

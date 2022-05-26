@@ -9,9 +9,8 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'slug';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
 
     protected $fillable = [
         'title',
@@ -21,17 +20,23 @@ class Course extends Model
         'banner_src',
         'price',
         'discount',
-        'discount_type',
+        'discount_type', //percent|value
         'will_start_in',
         'will_end_in',
-        'price_card',
-        'day_and_time',
-        'teacher',
-        'status_course',
+        'active',
     ];
 
     protected $casts = [
         'will_start_in' => 'datetime',
         'will_end_in' => 'datetime',
+        'active' => 'boolean',
     ];
+
+    /**
+     * Get all of the classes for the Course
+     */
+    public function classes()
+    {
+        return $this->hasMany(CourseClass::class);
+    }
 }

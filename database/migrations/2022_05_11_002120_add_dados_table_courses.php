@@ -14,10 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->string('price_card')->nullable();
-            $table->string('day_and_time')->nullable();
-            $table->string('teacher')->nullable();
-            $table->string('status_course')->default(true);
+            $table->boolean('active')->default(true);
         });
     }
 
@@ -29,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            //
+            $table->dropColumn('active');
         });
     }
 };

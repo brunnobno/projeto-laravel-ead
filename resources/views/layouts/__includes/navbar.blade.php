@@ -48,8 +48,8 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="{{ route('subscription-index') }}">Incrições</a>
-                                <a class="dropdown-item" href="{{ route('admin-index') }}">Configurações</a>
+                                <a class="dropdown-item" href="{{ route('admin.subscription-index') }}">Incrições</a>
+                                <a class="dropdown-item" href="{{ route('admin.index') }}">Configurações</a>
 
                             </div>
                         </li>

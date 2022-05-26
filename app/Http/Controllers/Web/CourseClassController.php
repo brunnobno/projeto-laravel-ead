@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 
 class CourseClassController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:admin'])->except([
+            'index',
+            'show',
+        ]);
+    }
+
     public function index()
     {
         $courses = CourseClass::where('id', 1)->orderBy('id', 'DESC')->Paginate(10);
-              return view('course_classes.index', ['courses' => $courses, ]);
-
+        return view('course_classes.index', ['courses' => $courses, ]);
     }
 
     public function create()

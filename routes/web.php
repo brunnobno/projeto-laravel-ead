@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Web\CourseClassController;
 use App\Http\Controllers\Web\CoursesController;
 use Illuminate\Support\Facades\Route;
@@ -18,39 +19,27 @@ Route::prefix('cursos')->group(function () {
 });
 
 Route::prefix('turmas')->group(function () {
-    Route::get('', [CourseClassController::class, 'index'])->middleware(['role:admin'])->name('class-index');
-    Route::get('criar', [CourseClassController::class, 'create'])->middleware(['role:admin'])->name('class-create');
-    Route::post('criar', [CourseClassController::class, 'store'])->middleware(['role:admin'])->name('class-store');
-    Route::get('t/{name?}', [CourseClassController::class, 'show'])->middleware(['role:admin'])->name('class-show');
-    Route::get('editar/{slug?}', [CourseClassController::class, 'edit'])->middleware(['role:admin'])
+    Route::get('', [CourseClassController::class, 'index'])->name('class-index');
+    Route::get('criar', [CourseClassController::class, 'create'])->name('class-create');
+    Route::post('criar', [CourseClassController::class, 'store'])->name('class-store');
+    Route::get('t/{name?}', [CourseClassController::class, 'show'])->name('class-show');
+    Route::get('editar/{slug?}', [CourseClassController::class, 'edit'])
         ->name('class-edit');
 
-    Route::put('atualizar/{slug?}', [CourseClassController::class, 'update'])->middleware(['role:admin'])
-        ->name('class-update');
+    Route::put('atualizar/{slug?}', [CourseClassController::class, 'update'])->name('class-update');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('inscritos/', [SubscriptionController::class, 'index'])->middleware(['role:admin'])
-        ->name('subscription-index');
+Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
+    Route::get('/', AdminDashboardController::class)->name('index');
+    Route::get('/dashboard', AdminDashboardController::class)->name('dashboard');
 
-    Route::get('inscritos/criar', [SubscriptionController::class, 'create'])->middleware(['role:admin'])
-        ->name('subscription-create');
-
-    Route::post('inscritos/criar', [SubscriptionController::class, 'store'])->middleware(['role:admin'])
-        ->name('subscription-store');
-
-    Route::get('inscritos/{name}', [SubscriptionController::class, 'show'])->middleware(['role:admin'])
-        ->name('subscription-show');
-
-    Route::get('inscritos/editar/{name}', [SubscriptionController::class, 'edit'])->middleware(['role:admin'])
-        ->name('subscription-edit');
-
-    Route::put('inscritos/atualizar/{name}', [SubscriptionController::class, 'update'])->middleware(['role:admin'])
-        ->name('subscription-update');
-
-    Route::get('', function() { return 'config';})->name('admin-index');
+    Route::get('inscritos/', [SubscriptionController::class, 'index'])->name('subscription-index');
+    Route::get('inscritos/criar', [SubscriptionController::class, 'create'])->name('subscription-create');
+    Route::post('inscritos/criar', [SubscriptionController::class, 'store'])->name('subscription-store');
+    Route::get('inscritos/{name}', [SubscriptionController::class, 'show'])->name('subscription-show');
+    Route::get('inscritos/editar/{name}', [SubscriptionController::class, 'edit'])->name('subscription-edit');
+    Route::put('inscritos/atualizar/{name}', [SubscriptionController::class, 'update'])->name('subscription-update');
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\Web\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\Web\HomeController::class, 'index'])->middleware('auth')->name('home');

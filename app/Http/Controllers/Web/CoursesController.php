@@ -17,7 +17,9 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courseClasses = CourseClass::active()->orderBy('id', 'DESC')
+        $allCourses = Course::where('active', 1)->orderBy('updated_at', 'DESC')->get();
+
+        $courseClasses = CourseClass::active()->orderBy('updated_at', 'DESC')
             ->with('course')
             ->whereHas('course', function ($query) {
                 $query->where('status', Course::STATUS_ACTIVE);
@@ -25,7 +27,8 @@ class CoursesController extends Controller
             ->Paginate(8);
 
         return view('courses.index', [
-            'courseClasses' => $courseClasses,
+            'courseClasses'     => $courseClasses,
+            'allCourses'        => $allCourses,
         ]);
     }
 

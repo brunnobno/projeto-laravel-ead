@@ -13,8 +13,8 @@ class AdminCourseClassController extends Controller
      * @param Request $request
      * @return
      */
-    public function index(Request $request)
+    public function index()
     {
-
+        return view('admin.dashboard.config');
     }
 }

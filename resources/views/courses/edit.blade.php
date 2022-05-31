@@ -93,7 +93,7 @@
             </div>
 
             <div class="row">
-                <div class="col-8 col-md-6 mb-3">
+                <div class="col-8 col-md-8 mb-3">
                     <label class="form-label">Banner do curso:</label>
                     <small class="text-muted text-small">(tamanho da imagem 500x500px)</small>
                     <input type="file" name="banner_src" value="{{ $course->banner_src }}" id="banner_src" class="form-control" placeholder="" />
@@ -103,7 +103,7 @@
                     @enderror
                 </div>
 
-                <div class="col-4 col-md-6 mb-3">
+                <div class="col-4 col-md-4 mb-3">
                     <img src="{{ $course->banner_src ? asset('storage/'.$course->banner_src) : asset('images/curso-sem-imagem.png') }}"
                         class="card-img-top" style="height: 150px" alt="{{ $course->title }} - Image">
                 </div>

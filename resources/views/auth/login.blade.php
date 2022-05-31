@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app-login')
 
 @section('login')
 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12 col-md-12 ">
-            <div class="row vh-100";>
+            <div class="row" style="height: 100%;">
                 <div class="col-12 col-md-6 bg-login">
 
                 </div>

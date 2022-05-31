@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->longText('small_description');
+            $table->longText('small_description')->nullable();
             $table->longText('long_description');
             $table->string('slug')->unique();
-            $table->string('cover_image');
+            $table->string('cover_image')->nullable();
             $table->integer('status')->default(1);
             $table->string('price')->nullable();
             $table->string('start_date')->nullable();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCourseClassController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Web\CourseClassController;
 use App\Http\Controllers\Web\CoursesController;
@@ -23,10 +24,8 @@ Route::prefix('turmas')->group(function () {
     Route::get('criar', [CourseClassController::class, 'create'])->name('class-create');
     Route::post('criar', [CourseClassController::class, 'store'])->name('class-store');
     Route::get('t/{name?}', [CourseClassController::class, 'show'])->name('class-show');
-    Route::get('editar/{slug?}', [CourseClassController::class, 'edit'])
-        ->name('class-edit');
-
-    Route::put('atualizar/{slug?}', [CourseClassController::class, 'update'])->name('class-update');
+    Route::get('editar/{slug}', [CourseClassController::class, 'edit'])->name('class-edit');
+    Route::put('atualizar/{slug}', [CourseClassController::class, 'update'])->name('class-update');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {

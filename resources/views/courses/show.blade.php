@@ -5,7 +5,6 @@
 
 <div class="col-12-col-md-10 border bg-white shadow mb-5 bg-body rounded p-0">
     <div class="row justify-content-center m-0" >
-
         <div class="col-12 col-md-6 p-3">
             <div class="card" style="width:100%">
                 <img
@@ -50,10 +49,8 @@
                     ? "incricao-no-curso-{$course->id}-classe-XYZ"
                     : "lista-de-classes-para-o-curso-{$course->id}";
             @endphp
-            {{ $linkPara }}
             <a href="#{{ $linkPara }}" class="btn btn-primary">Eu quero participar!</a>
         </div>
-
     </div>
 </div>
 @endsection

@@ -22,11 +22,6 @@ class CourseFactory extends Factory
             'long_description'      => "Some description here. " . $this->faker->paragraph(),
             'banner_source_type'    => null,
             'banner_src'            => null,
-            'price'                 => rand(0, 1000).".00",
-            'discount'              => 0,
-            'discount_type'         => 'value', //percent|value
-            'will_start_in'         => null,
-            'will_end_in'           => null,
             'active'                => true,
         ];
     }

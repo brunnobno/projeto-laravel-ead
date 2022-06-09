@@ -18,11 +18,6 @@ class Course extends Model
         'long_description',
         'banner_source_type',
         'banner_src',
-        'price',
-        'discount',
-        'discount_type', //percent|value
-        'will_start_in',
-        'will_end_in',
         'active',
     ];
 

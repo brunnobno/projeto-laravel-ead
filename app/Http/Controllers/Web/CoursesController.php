@@ -17,18 +17,26 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $allCourses = Course::where('active', 1)->orderBy('updated_at', 'DESC')->get();
+        $allCoursesActive = Course::where('active', true)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+
+        $allCoursesInactive = Course::where('active', false)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
 
         $courseClasses = CourseClass::active()->orderBy('updated_at', 'DESC')
             ->with('course')
             ->whereHas('course', function ($query) {
                 $query->where('status', Course::STATUS_ACTIVE);
+                $query->where('active', true);
             })
             ->Paginate(8);
 
         return view('courses.index', [
-            'courseClasses'     => $courseClasses,
-            'allCourses'        => $allCourses,
+            'courseClasses'          => $courseClasses,
+            'allCoursesActive'       => $allCoursesActive,
+            'allCoursesInactive'        => $allCoursesInactive,
         ]);
     }
 
@@ -51,52 +59,40 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->validate([
-            'title'                 => 'required|string|min:10|max:255',
-            'slug'                  => 'required|string|min:5|max:255',
-            'long_description'      => 'nullable|string|min:10|max:2000',
-            // 'banner_source_type'    => 'nullable|string',
-            'banner_src'            => 'nullable',
-            'price'                 => 'nullable|numeric',
-            // 'discount'              => 'nullable|integer',
-            // 'discount_type'         => 'nullable|string',
-            'will_start_in'         => 'nullable|date:Y-m-d',
-            'will_end_in'           => 'nullable|date:Y-m-d',
-            'price_card'            => 'nullable|string',
-            'day_and_time'          => 'nullable|string',
-            'teacher'               => 'nullable|string',
-            'status_course'         => 'nullable|string'
-        ]);
+        // $data = $request->validate([
+        //     'title'                 => 'required|string|min:10|max:255',
+        //     'slug'                  => 'required|string|min:5|max:255',
+        //     'long_description'      => 'nullable|string|min:10|max:2000',
+        //     // 'banner_source_type'    => 'nullable|string',
+        //     'banner_src'            => 'nullable',
+        //     'price_card'            => 'nullable|string',
+        //     'day_and_time'          => 'nullable|string',
+        //     'teacher'               => 'nullable|string',
+        //     'status_course'         => 'nullable|string'
+        // ]);
 
         try{
-        // Upload Image
-        if($request->hasFile('banner_src')) {
-            $extension = $request->file('banner_src')->getClientOriginalExtension();
-            $imageNameStore = date('Y-m-d_H-i-s').'_'.rand().'.'.$extension;
-            $imagePath = $request->file('banner_src')
-                                    ->storeAs('images/courses', $imageNameStore, 'public');
-        }
+            // Upload Image
+            if($request->hasFile('banner_src')) {
+                $extension = $request->file('banner_src')->getClientOriginalExtension();
+                $imageNameStore = date('Y-m-d_H-i-s').'_'.rand().'.'.$extension;
+                $imagePath = $request->file('banner_src')
+                                        ->storeAs('images/courses', $imageNameStore, 'public');
+            }
 
-        $dataToInsert = $request->only([
-            'title',
-            'slug',
-            'long_description',
-            // 'banner_source_type,
-            'banner_src',
-            'price',
-            // 'discount,
-            // 'discount_type,
-            'will_start_in',
-            'will_end_in',
-            'price_card',
-            'day_and_time',
-            'teacher',
-            'status_course',
-        ]);
+            $dataToInsert = $request->only([
+                'title',
+                'slug',
+                'long_description',
+                'banner_src',
+                'active',
+            ]);
 
-        if($request->hasFile('banner_src')) {
-            $dataToInsert['banner_src'] = $imagePath ?? null;
-        }
+            if($request->hasFile('banner_src')) {
+                $dataToInsert['banner_src'] = $imagePath ?? null;
+            }
+
+            $dataToInsert['active'] = (bool) $request->input('active');
 
             $insert = Course::create($dataToInsert);
 
@@ -179,11 +175,6 @@ class CoursesController extends Controller
             'long_description'      => 'nullable|string|min:10|max:2000',
             'banner_source_type'    => 'nullable|string',
             'banner_src'            => 'nullable',
-            'price'                 => 'nullable|numeric',
-            'discount'              => 'nullable|integer',
-            'discount_type'         => 'nullable|string',
-            'will_start_in'         => 'nullable|date:Y-m-d',
-            'will_end_in'           => 'nullable|date:Y-m-d',
         ]);
 
         $dataToInsert = $request->only([
@@ -191,29 +182,28 @@ class CoursesController extends Controller
             'long_description',
             'banner_source_type',
             'price',
-            'discount',
-            'discount_type',
-            'will_start_in',
-            'will_end_in',
         ]);
 
         if($request->hasFile('banner_src')) {
             $dataToInsert['banner_src'] = $imagePath ?? null;
         }
 
-        try{
+        $dataToInsert['active'] = (bool) $request->input('active');
+
+        try {
             $update = $course->update($dataToInsert);
 
             if(!$update) {
                 return redirect()->route('course-edit', $request->slug)->with('error', 'Erro ao atualizar curso. Tente novamente!');
             }
-                return redirect()->route('courses-index')->with('success', 'Curso atualizado com sucesso!');
 
-            } catch (\Throwable $th) {
-                $error = config('app.env') === 'production' ? 'Erro ao atualizar curso!' : $th->getMessage();
+            return redirect()->route('courses-index')->with('success', 'Curso atualizado com sucesso!');
 
-                return redirect()->route('course-edit', $request->slug)->with('error', $error);
-            }
+        } catch (\Throwable $th) {
+            $error = config('app.env') === 'production' ? 'Erro ao atualizar curso!' : $th->getMessage();
+
+            return redirect()->route('course-edit', $request->slug)->with('error', $error);
+        }
     }
 
     /**

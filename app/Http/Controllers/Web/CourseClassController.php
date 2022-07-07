@@ -30,7 +30,7 @@ class CourseClassController extends Controller
 
     public function create()
     {
-        $coursesId = Course::get();
+        $coursesId = Course::where('active', true)->get();
 
         return view('course_classes.create', [
             'coursesId'         =>  $coursesId,
@@ -118,7 +118,6 @@ class CourseClassController extends Controller
             $imagePath = $request->file('conver_image')
                                     ->storeAs('images/courses', $imageNameStore, 'public');
         }
-
 
         $dataToInsert = $request->only([
             'name',

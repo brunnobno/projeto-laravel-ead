@@ -1,0 +1,149 @@
+{
+  "lists": [
+    {
+      "id": "0863ff89-26b8-4425-ab51-7259fe096e57",
+      "title": "To do",
+      "cards": [
+        {
+          "id": "1dc75835-d8b6-45c0-89b7-5730ff44c0d2",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Relação aluno/turma",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "614624a4-bc7f-44f0-abde-41999f2caffb",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Registro aluno -> manual/aluno",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "d07c07a3-193a-44f0-a654-6d4edbc86e29",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Cadastro Professor-> Manual",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "b38b04fc-362e-4ba1-aeec-ce63512d45b6",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Turma -> Adicionar aulas (as aulas podem ser reutilizadas em outra turma)",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "05d40e25-1b49-404a-a043-f7fcf2539335",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Checkout -> Ter a opção de pgto e opção somente de inscrição com aprovação",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "c4aeb830-ad13-41d6-8f99-ebb5b2ab3d37",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Aulas -> Marcar aula como lida",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "cee75333-03b8-4d7b-9b2a-72b7ebb61b69",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Aulas -> Avaliação da aula",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "831a566b-8d33-4c0d-929c-e4a000de9140",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Mensagens -> Troca de mensagens entre alunos e professores",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "3972cd48-77d3-4d67-b984-aa00ed726cf8",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Notificações (email) -> novas aulas, novos cursos, novas mensagens.",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "f5bf32ca-017a-4691-8e4a-fe4f61ce3cee",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Notificações (front) -> novas aulas, novos cursos, novas mensagens.",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "cd185572-9352-410e-9eb0-a9f8ba4945c7",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Sistema Saas -> Criar um cadastro que cria uma nova conta no portal EAD",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "dac37cb0-aab5-4583-a21e-cfa9aa78aa46",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Enviar para o servidor da forma correta",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "828bc3e1-b876-4a3e-bb86-9add30fd87b6",
+          "listId": "0863ff89-26b8-4425-ab51-7259fe096e57",
+          "title": "Aluno -> visualizar dados de cadastro e de incrições (forma de pgto, turmas, avisos)",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "a50e3940-be23-4f50-972c-80d321a22e76",
+      "title": "Doing",
+      "cards": []
+    },
+    {
+      "id": "99095286-02f4-40c5-bf54-2ea739d2a932",
+      "title": "Done",
+      "cards": []
+    },
+    {
+      "id": "09ef2e0e-a185-4f0d-8944-8f2cc5c57108",
+      "title": "Backlog",
+      "cards": []
+    }
+  ],
+  "archive": {
+    "lists": [],
+    "cards": []
+  },
+  "settings": {
+    "labels": []
+  }
+}

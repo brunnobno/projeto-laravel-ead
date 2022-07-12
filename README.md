@@ -1,3 +1,8 @@
+## Dependencias
+- vscode
+    - Extenções
+        - harehare.portable-kanban
+        
 ## Doing
 
 * lista de cursos
